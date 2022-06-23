@@ -9,7 +9,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-          Github Committs
+          Github Commits
           <Search />
       </header>
     </div>
