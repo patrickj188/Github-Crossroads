@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { Octokit } from "octokit";
 import { CommitList } from "./CommitList";
 
@@ -32,10 +32,13 @@ const Search = ({ repo }: SearchProps) => {
 
     }, [repo])
 
-    // Mapping over the response data and sending them as props to the CommitList component 
-    let renderedCommits = commitsData.map((x) => {
-        return <CommitList key={x.sha} message={x.commit.message} date={x.commit.author.date} />
-    })
+    // Mapping over the response data and sending them as props to the CommitList component. Added useMemo as it is good practice. 
+    let renderedCommits = useMemo(() =>
+        commitsData.map((x) => {
+            return <CommitList key={x.sha} message={x.commit.message} date={x.commit.author.date} />
+        }), [commitsData])
+
+
 
     return (
         <div>
