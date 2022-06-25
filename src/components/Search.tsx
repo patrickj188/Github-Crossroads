@@ -35,7 +35,7 @@ const Search = ({ repo }: SearchProps) => {
     // Mapping over the response data and sending them as props to the CommitList component. Added useMemo as it is good practice. 
     let renderedCommits = useMemo(() =>
         commitsData.map((x) => {
-            return <CommitList key={x.sha} message={x.commit.message} date={x.commit.author.date} />
+            return <CommitList key={x.sha} message={x.commit.message} date={x.commit.author.date} link={x.html_url} />
         }), [commitsData])
 
 

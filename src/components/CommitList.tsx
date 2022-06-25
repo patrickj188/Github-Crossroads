@@ -3,6 +3,7 @@ import {
     Space,
     Group,
     Text,
+    UnstyledButton
 } from "@mantine/core";
 import Moment from 'react-moment';
 
@@ -11,7 +12,8 @@ import Moment from 'react-moment';
 type CommitListProps = {
     message: string,
     date: string,
-    key: string
+    key: string,
+    link: string
 
 }
 
@@ -26,13 +28,15 @@ export const CommitList = (props: CommitListProps) => {
         //Using Mantine to add simple style to the project
         <Stack>
             <Group>
-                <div>
-                    <Text>{props.message}</Text>
-                    <Text size="xs" color="gray">
-                        <Moment>{dateToFormat}</Moment>
-                    </Text>
-                    <Space h="md" />
-                </div>
+                <UnstyledButton onClick={() => window.open(props.link, "_blank")}>
+                    <div>
+                        <Text>{props.message}</Text>
+                        <Text size="xs" color="gray">
+                            <Moment>{dateToFormat}</Moment>
+                        </Text>
+                        <Space h="md" />
+                    </div>
+                </UnstyledButton>
             </Group>
         </Stack>
     );
