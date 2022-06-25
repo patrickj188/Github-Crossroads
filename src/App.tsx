@@ -11,6 +11,13 @@ function App() {
     { value: 'react-poke', label: 'react-poke' },
     { value: 'movie-search', label: 'movie-search' },
     { value: 'DarkSoulsBosses', label: 'DarkSoulsBosses' },
+    { value: 'portfolio', label: 'portfolio' },
+    { value: 'meet-up', label: 'meet-up' },
+    { value: 'widgets', label: 'widgets' },
+    { value: 'Bamazon', label: 'Bamazon' },
+    { value: 'ClickyGame', label: 'ClickyGame' },
+    { value: 'Signal_Project', label: 'Signal_Project' },
+
   ]
 
   const [repo, setRepo] = useState<string>(repoData[0].value)
