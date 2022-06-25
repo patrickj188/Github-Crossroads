@@ -2,23 +2,27 @@ import React from 'react';
 import { useState } from 'react';
 import './App.css';
 import Search from './components/Search';
-import { AppShell, Navbar, Header, Center, Input, Text, Select, Divider, Timeline } from '@mantine/core';
+import { AppShell, Navbar, Header, Center, Text, Select, Divider } from '@mantine/core';
 import { BrandGithub } from 'tabler-icons-react';
 
 function App() {
-  const [repo, setRepo] = useState<string>('')
-
-  const data = [
+  const repoData = [
     { value: 'github-crossroads', label: 'github-crossroads' },
     { value: 'react-poke', label: 'react-poke' },
     { value: 'movie-search', label: 'movie-search' },
     { value: 'DarkSoulsBosses', label: 'DarkSoulsBosses' },
   ]
 
+  const [repo, setRepo] = useState<string>(repoData[0].value)
 
-  const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setRepo(event.target.value);
-    console.log(event.target.value);
+
+  /// This will handle the change on the selected repo and then pass it to thh search component to the API. 
+  const handleChange = (selected: string | null) => {
+    if (selected != null) {
+
+      setRepo(selected);
+      console.log(selected);
+    }
   };
 
 
@@ -30,10 +34,11 @@ function App() {
           <Select
             clearable
             searchable
-            data={data}
+            data={repoData}
             placeholder="Filter by Repo"
             nothingFound="Nothing found"
-            onChange={event => handleChange}
+            value={repo}
+            onChange={(event) => handleChange(event)}
           />
         </div>
 
@@ -56,7 +61,7 @@ function App() {
     >
       <Text size="xl">Commit Comments</Text>
       <Divider my="xl" />
-      <Search />
+      <Search repo={repo} />
     </AppShell>
   );
 }

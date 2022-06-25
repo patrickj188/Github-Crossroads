@@ -18,12 +18,12 @@ type CommitListProps = {
 
 export const CommitList = (props: CommitListProps) => {
 
-//Using Moment.JS to convert the date being pulled from the github API
+    //Using Moment.JS to convert the date being pulled from the github API
     const dateToFormat = new Date(props.date);
 
     return (
 
-//Using Mantine to add simple style to the project
+        //Using Mantine to add simple style to the project
         <Stack>
             <Group>
                 <div>
